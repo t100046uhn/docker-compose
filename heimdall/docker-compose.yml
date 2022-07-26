@@ -9,7 +9,7 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /docker/config/heimdall:/config
+      - ./config:/config
     ports:
       - 443:443
     restart: unless-stopped
