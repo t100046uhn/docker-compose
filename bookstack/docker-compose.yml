@@ -14,7 +14,7 @@ services:
       - DB_DATABASE=bookstackapp
       - TZ=America/Toronto
     volumes:
-      - /docker/config/bookstack:/config
+      - ./config:/config
     ports:
       - 6875:443
     restart: unless-stopped
@@ -32,5 +32,5 @@ services:
       - MYSQL_USER=bookstack
       - MYSQL_PASSWORD=bookstack
     volumes:
-      - /docker/config/mariadb:/config
+      - ./mariadb_config:/config
     restart: unless-stopped
