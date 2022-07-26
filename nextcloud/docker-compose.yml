@@ -9,8 +9,8 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - /docker/nextcloud/config:/config
-      - /docker/nextcloud/data:/data
+      - ./config:/config
+      - ./data:/data
     ports:
       - 443:443
     restart: unless-stopped
