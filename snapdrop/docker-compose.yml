@@ -1,0 +1,15 @@
+---
+version: "2.1"
+services:
+  snapdrop:
+    image: lscr.io/linuxserver/snapdrop:latest
+    container_name: snapdrop
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - /docker/snapdrop/config:/config
+    ports:
+      - 443:443
+    restart: unless-stopped
