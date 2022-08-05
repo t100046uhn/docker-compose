@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+  trilium:
+    image: zadam/trilium:latest
+    container_name: trilium
+    environment:
+      - TZ=America/Toronto
+    volumes:
+      - ./data:/home/node/trilium-data
+    ports:
+      - 127.0.0.1:8080:8080
+    restart: unless-stopped
