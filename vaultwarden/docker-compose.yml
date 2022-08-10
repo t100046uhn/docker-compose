@@ -7,7 +7,7 @@ services:
     container_name: vaultwarden
     environment:
       - TZ=America/Toronto
-      - WEBSOCKET_ENABLED: "true"  # Enable WebSocket notifications.
+      - WEBSOCKET_ENABLED = true  # Enable WebSocket notifications.
     volumes:
       - ./data:/data
     ports:
