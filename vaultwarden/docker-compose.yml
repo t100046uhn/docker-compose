@@ -18,7 +18,7 @@ services:
       # SMTP Configuration | https://github.com/dani-garcia/vaultwarden/wiki/SMTP-Configuration
       #- SMTP_HOST=smtp.gmail.com
       #- SMTP_FROM=
-      #- SMTP_PORT=465
+      #- SMTP_PORT=587
       #- SMTP_SECURITY=force_tls
       #- SMTP_USERNAME=<mail-address>
       #- SMTP_PASSWORD=<less-secure-app-password>
