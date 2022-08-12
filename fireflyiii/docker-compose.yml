@@ -6,12 +6,7 @@ services:
     container_name: fireflyiii
     environment:
       - TZ=America/Toronto
-      - APP_ENV=local
-      - APP_DEBUG=false
-      - SITE_OWNER=mail@example.com
       - APP_KEY_FILE=/run/secrets/app_key # Generate using: openssl rand -base64 32
-      - DEFAULT_LANGUAGE=en_US
-      -
     volumes:
       - ./upload:/var/www/html/storage/upload
     ports:
