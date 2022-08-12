@@ -7,11 +7,22 @@ services:
     container_name: vaultwarden
     environment:
       - TZ=America/Toronto
-      - WEBSOCKET_ENABLED=true  # Enable WebSocket notifications.
+      - WEBSOCKET_ENABLED=true # Enable WebSocket notifications.
       - FILE_ADMIN_TOKEN=./admin_token # Generate using: openssl rand -base64 48
+      - SIGNUPS_ALLOWED=false
+      - INVITATIONS_ALLOWED=false
+      - SHOW_PASSWORD_HINT=false
+      - LOG_FILE=/data/vaultwarden.log # https://github.com/dani-garcia/vaultwarden/wiki/Logging
+      #- ROCKET_WORKERS=20 # Numer of threads to handle requests
+      # SMTP Configuration | https://github.com/dani-garcia/vaultwarden/wiki/SMTP-Configuration
+      #- SMTP_HOST=smtp.gmail.com
+      #- SMTP_PORT=465
+      #- SMTP_SECURITY=force_tls
+      #- SMTP_USERNAME=<mail-address>
+      #- SMTP_PASSWORD=<less-secure-app-password>
     volumes:
       - ./data:/data
     ports:
       - 127.0.0.1:8080:80
-      - 3012:3012
+      - 127.0.0.1:3012:3012
     restart: unless-stopped
