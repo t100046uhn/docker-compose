@@ -13,7 +13,7 @@ services:
       - INVITATIONS_ALLOWED=false
       - SHOW_PASSWORD_HINT=false
       - LOG_FILE=/data/vaultwarden.log # https://github.com/dani-garcia/vaultwarden/wiki/Logging
-      - DOMAIN=https://0.0.0.0:0000 # Address Vaultwarden is available at
+      - DOMAIN=https://0.0.0.0:0000 # Address Vaultwarden is available at including port if applicable
       #- ROCKET_WORKERS=20 # Numer of threads to handle requests
       # SMTP Configuration | https://github.com/dani-garcia/vaultwarden/wiki/SMTP-Configuration
       #- SMTP_HOST=smtp.gmail.com
