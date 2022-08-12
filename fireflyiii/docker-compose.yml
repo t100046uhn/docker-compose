@@ -4,9 +4,7 @@ services:
   firefly:
     image: fireflyiii/core:latest
     container_name: fireflyiii
-    environment:
-      - TZ=America/Toronto
-      - APP_KEY_FILE=/run/secrets/app_key # Generate using: openssl rand -base64 32
+    env_file: .env
     volumes:
       - ./upload:/var/www/html/storage/upload
     ports:
