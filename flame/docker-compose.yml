@@ -19,4 +19,4 @@ services:
 
 secrets:
   password:
-    file: ./password
+    file: ./password # Generate using: openssl rand -base64 48
