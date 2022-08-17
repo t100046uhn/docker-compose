@@ -1,5 +1,5 @@
 ---
-version: '3.6'
+version: '3'
 
 services:
   flame:
@@ -10,7 +10,6 @@ services:
       - PASSWORD_FILE=/run/secrets/password
     volumes:
       - ./data:/app/data
-      - /var/run/docker.sock:/var/run/docker.sock # optional but required for Docker integration
     ports:
       - 5005:5005
     secrets:
