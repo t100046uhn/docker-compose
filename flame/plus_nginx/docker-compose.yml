@@ -1,0 +1,35 @@
+---
+version: '3.6'
+
+services:
+  flame:
+    image: pawelmalak/flame
+    container_name: flame
+    environment:
+      - TZ=America/Toronto
+      - PASSWORD_FILE=/run/secrets/password
+    volumes:
+      - ./data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock # optional but required for Docker integration
+    ports:
+      - 5005:5005
+    secrets:
+      - password
+    restart: unless-stopped
+  nginx:
+    image: lscr.io/linuxserver/nginx:latest
+    container_name: nginx
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - ./config:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+
+secrets:
+  password:
+    file: ./password # Generate using: openssl rand -base64 48
