@@ -9,7 +9,7 @@ services:
       - TZ=America/Toronto
       - PASSWORD_FILE=/run/secrets/password
     volumes:
-      - ./data:/app/data
+      - ./flame_data:/app/data
     #ports:
       #- 5005:5005
     secrets:
@@ -23,7 +23,7 @@ services:
       - PGID=1000
       - TZ=America/Toronto
     volumes:
-      - ./config:/config
+      - ./nginx_config:/config
     ports:
       - 80:80
       - 443:443
