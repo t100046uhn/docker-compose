@@ -10,8 +10,8 @@ services:
       - PASSWORD_FILE=/run/secrets/password
     volumes:
       - ./flame_data:/app/data
-    #ports:
-      #- 5005:5005
+    ports:
+      - 127.0.0.1:5005:5005
     secrets:
       - password
     restart: unless-stopped
