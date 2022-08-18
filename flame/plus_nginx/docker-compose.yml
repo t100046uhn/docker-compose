@@ -24,7 +24,7 @@ services:
       - TZ=America/Toronto
     volumes:
       - ./nginx_config:/config
-      - ./default:/config/nginx/site-confs/default
+      - ./site-confs:/config/nginx/site-confs
     ports:
       - 80:80
       - 443:443
