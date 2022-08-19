@@ -12,7 +12,7 @@ services:
       - ./data:/app/data
       - /var/run/docker.sock:/var/run/docker.sock # optional but required for Docker integration
     ports:
-      - 5005:5005
+      - 127.0.0.1:5005:5005
     secrets:
       - password
     restart: unless-stopped
