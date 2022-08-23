@@ -32,6 +32,6 @@ services:
 
 secrets:
   app_key:
-    file: ./app_key # Generate using: openssl rand -base64 48
+    file: ./app_key # Generate using: openssl rand -base64 32
   fireflydb_password:
     file: ./fireflydb_password # Generate using: openssl rand -base64 48
