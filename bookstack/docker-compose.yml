@@ -24,6 +24,7 @@ services:
     restart: unless-stopped
     depends_on:
       - bookstack_db
+
   bookstack_db:
     image: lscr.io/linuxserver/mariadb
     container_name: bookstack_db
