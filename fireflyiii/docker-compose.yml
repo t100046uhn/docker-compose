@@ -3,7 +3,7 @@ version: '3.3'
 services:
   firefly:
     image: fireflyiii/core:latest
-    container_name: fireflyiii
+    container_name: firefly
     env_file: .env
     volumes:
       - ./upload:/var/www/html/storage/upload
@@ -13,6 +13,8 @@ services:
       - db
     secrets:
       - app_key
+      - mysql_user
+      - mysql_password
     restart: unless-stopped
 
   db:
@@ -21,17 +23,20 @@ services:
     hostname: fireflyiiidb
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
-      - MYSQL_USER=firefly
-      - MYSQL_PASSWORD_FILE=/run/secrets/fireflydb_password
+      - MYSQL_USER_FILE=/run/secrets/mysql_user
+      - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
       - MYSQL_DATABASE=firefly
     volumes:
       - ./db:/var/lib/mysql
     secrets:
-      - fireflydb_password
+      - mysql_user
+      - mysql_password
     restart: unless-stopped
 
 secrets:
   app_key:
     file: ./app_key # Generate using: openssl rand -base64 32
-  fireflydb_password:
-    file: ./fireflydb_password # Generate using: openssl rand -base64 48
+  mysql_user:
+    file: ./mysql_user
+  mysql_password:
+    file: ./mysql_password # Generate using: openssl rand -base64 48
