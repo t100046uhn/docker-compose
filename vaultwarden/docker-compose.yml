@@ -8,7 +8,7 @@ services:
     environment:
       - TZ=America/Toronto
       - WEBSOCKET_ENABLED=true # Enable WebSocket notifications.
-      - ADMIN_TOKEN_FILE=/run/secrets/admin_token # Generate using: openssl rand -base64 48
+      - ADMIN_TOKEN_FILE=/run/secrets/admin_token
       - SIGNUPS_ALLOWED=false
       - INVITATIONS_ALLOWED=false
       - SHOW_PASSWORD_HINT=false
@@ -33,4 +33,4 @@ services:
     
 secrets:
   admin_token:
-    file: ./admin_token
+    file: ./admin_token # Generate using: openssl rand -base64 48
