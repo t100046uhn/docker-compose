@@ -18,6 +18,9 @@ services:
       - ./config:/config
     ports:
       - 6875:443
+    secrets:
+      - mysql_user
+      - mysql_pass
     restart: unless-stopped
     depends_on:
       - bookstack_db
@@ -34,6 +37,10 @@ services:
       - MYSQL_PASSWORD_FILE=/run/secrets/mysql_pass
     volumes:
       - ./mariadb_config:/config
+    secrets:
+      - sqlrootpass
+      - mysql_user
+      - mysql_pass
     restart: unless-stopped
     
 secrets:
