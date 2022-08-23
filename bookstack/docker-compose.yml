@@ -1,5 +1,6 @@
 ---
 version: "2"
+
 services:
   bookstack:
     image: lscr.io/linuxserver/bookstack
@@ -9,8 +10,8 @@ services:
       - PGID=1000
       - APP_URL=
       - DB_HOST=bookstack_db
-      - DB_USER=bookstack
-      - DB_PASS=bookstack
+      - DB_USER_FILE=/run/secrets/mysql_user
+      - DB_PASS_FILE=/run/secrets/mysql_pass
       - DB_DATABASE=bookstackapp
       - TZ=America/Toronto
     volumes:
@@ -26,11 +27,19 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - MYSQL_ROOT_PASSWORD=sqlroot
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/sqlrootpass
       - TZ=America/Toronto
       - MYSQL_DATABASE=bookstackapp
-      - MYSQL_USER=bookstack
-      - MYSQL_PASSWORD=bookstack
+      - MYSQL_USER_FILE=/run/secrets/mysql_user
+      - MYSQL_PASSWORD_FILE=/run/secrets/mysql_pass
     volumes:
       - ./mariadb_config:/config
     restart: unless-stopped
+    
+secrets:
+  mysql_user:
+    file: ./mysql_user
+  mysql_pass:
+    file: ./mysql_pass # Generate using: openssl rand -base64 48
+  sqlrootpass:
+    file: ./sqlrootpass # Generate using: openssl rand -base64 48
